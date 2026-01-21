@@ -16,7 +16,7 @@ before_script:
 build:
   stage: build
   script:
-    - echo "Started Building the application"
+    - echo "Starting Building the application"
     - python -m flask run
 
 deploy:

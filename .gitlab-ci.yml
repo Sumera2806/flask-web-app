@@ -1,0 +1,28 @@
+image: python:3.8-slim
+
+stages:
+  - build
+  - deploy
+
+cache:
+  paths:
+    - venv/
+
+before_script:
+  - python -m venv venv
+  - source venv/bin/activate
+  - pip install -r requirements.txt
+
+build:
+  stage: build
+  script:
+    - echo "Building the application"
+    - python -m flask run
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying the application"
+    - python -m flask run --host=0.0.0.0
+  only:
+    - master
